@@ -1,0 +1,3 @@
+- [[STM32F103 江协科技]]
+- [STM32F103 BSP学习指南_stm32 bsp-CSDN博客](https://blog.csdn.net/h050210/article/details/146059372)
+- https://github.com/realhonbo/stboot-stm32

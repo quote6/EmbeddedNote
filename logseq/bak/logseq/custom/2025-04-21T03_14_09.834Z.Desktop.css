@@ -1,0 +1,16 @@
+/*
+fonts initalization
+*/
+@import url(https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500&display=swap);
+:root {
+  --ls-font-family: "Roboto", sans-serif;
+  --verse: 185, 100%;
+  --warn: 46, 74%;
+  --important: 338, 80%;
+  --tip: 209, 87%;
+  --note: 210, 9%;
+  --caution: 376, 100%;
+  --pinned: 224, 88%;
+  --example: 213, 20%;
+}

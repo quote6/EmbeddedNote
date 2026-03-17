@@ -1,0 +1,17 @@
+/*
+root variables including colors, font-familys and a shadow style
+*/
+:root {
+	--h-border-color: rgb(255, 191, 191);
+	--h-bg-color: rgb(255, 232, 232);
+	--table-border-color: rgb(255, 235, 211);
+	--th-bg-color: rgb(255, 243, 228);
+	--tr-bg-color: rgb(255, 249, 242);
+	--tr-hover-bg-color: rgb(254, 255, 230);
+	--code-bg-color: rgb(247, 247, 247);
+	--del-color: rgb(151, 151, 151);
+	--selection-bg-color: rgb(235, 227, 255);
+	--block-shadow: 0.15rem 0.15rem 0.5rem rgb(150, 150, 150);
+	--sans-serif-font: "Noto Sans SC Medium", "Noto Sans SC", sans-serif;
+	--monospace-font: "Source Code Pro Regular", "Source Code Pro", monospace;
+}

@@ -1,0 +1,33 @@
+- > 原文链接
+  [为什么Linux在x86上不需要设备树，在ARM上需要设备树？](https://mp.weixin.qq.com/s?__biz=MzU5ODc5MTI1Nw==&mid=2247491763&idx=1&sn=f3b6f68f5526a6f48488e4007df922ff&chksm=ffb8886dcec02eb8dd27067ec55295d975cac9c0d0904ede846fbd22b1ecf702df79e871c352&mpshare=1&scene=23&srcid=0421dvA1CnhYDVDoo5XdtWnB&sharer_shareinfo=347bed6a4da5a2040a95cb56e4e5e458&sharer_shareinfo_first=347bed6a4da5a2040a95cb56e4e5e458#rd)
+- 不知道大家在看着篇文章之前是不是知道linux在x86和arm上关于设备树是不一样的。
+- 设备树就是一种描述硬件结构的数据结构，它告诉操作系统在启动时，硬件是什么样子的。它像是一个说明书，告诉操作系统如何找到和使用每个硬件设备。
+- 既然这样为什么x86架构的不需要设备树呢？没有设备树x86电脑如何识别各个外设的呢？
+- ![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/CpwW4MwCe35v0GzyXVkDKBn7wmYf83QdC0QGhHkGNPoxnJMcm31kEZphTGZN1ETak0LID3TLib9j7H74zUKDib7g/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1){:height 193, :width 314}
+- # 什么是设备树
+	- 设备树就像一张硬件地图，里面记录了所有外设设备的信息，甚至是设备之间的连接关系。它通常以一个树形结构存储，比如有一个根节点，下面有 CPU 节点、内存节点、串口节点等等。每个节点上都记录着具体设备的属性和配置信息，操作系统在启动时可以读取这些信息来正确地初始化每个硬件。
+	- 在 ARM 设备中，Linux 内核会根据设备树来加载对应的硬件驱动程序，并初始化硬件。比如，设备树会告诉 Linux 当前系统有没有串口、网卡、显示屏等设备，内核通过读取设备树后，才能正确地配置和管理这些硬件。
+	- 关于设备树的详细介绍就不再这篇文章里介绍了，感兴趣的可以自己搜索一下设备树的相关文章。
+- # 为什么x86不需要设备树？
+	- 因为 x86 上，大部分设备是能探测的。操作系统能自动处理。少部分不能探测的设备里，大部分是 BIOS配置好通过 ACPI 表交给操作系统的。还有一小撮，确实是源码里写死的。
+	- ![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/CpwW4MwCe35v0GzyXVkDKBn7wmYf83QdNgXvEUttKVXNVoyEVicQ0UXA9Ucqdbwk44f7gcohruw3B31icD1A0H5w/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1)
+	- 刚才说到 x86/64 上，大部分设备是能探测的，cpu能探测外设信息肯定需要一个标准协议，在x86上许多设备是基于 PCI/PCIe 总线的，可以自动枚举到，这种设备不需要设备树来告知系统。
+	- 所以，操作系统在启动时，基本上知道怎么去使用这些硬件，比如 CPU、内存、硬盘、显卡这些设备。换句话说，x86 的硬件“标准化”程度非常高，Linux 内核可以通过硬件自带的标准信息（比如 BIOS/UEFI）来识别和配置硬件，根本不需要额外的设备树来告诉它硬件结构。
+	- 这也就是为什么你在安装 ubuntu 的时候所有人都可以使用同一个镜像，而不需要根据你自己的电脑外设编译出来一个你这个电脑特有的镜像。
+	- 总结下来x86不需要设备树的原因主要以下几点：
+		- PCI枚举：内核启动时自动扫描PCI总线，发现所有设备。
+		- ACPI表：固件提供标准化的系统信息表（如APIC、MADT），甚至支持动态热插拔。
+		- 历史惯性：x86生态已形成稳定闭环，设备树的收益有限，改造成本却很高。
+- # 为什么ARM为啥需要设备树？
+	- 好了，接下来我们聊聊 ARM 为什么需要设备树。ARM 和 x86 比起来有一点特别，那就是它的硬件差异非常大。Arm架构的硬件生态截然不同，高通、三星、华为……每家芯片的设计千差万别（内存地址、中断控制器、外设类型），并没有统一的标准接口来管理。
+	- 而且 ARM 架构被广泛应用在手机、平板、嵌入式设备、甚至一些小型服务器上，但这些设备的硬件配置差异就大了。不同的 ARM 设备可能会有不同的 CPU、不同的外设、不同的总线结构等等，这让每个 ARM 设备的硬件配置都非常不一样。
+	- ![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/CpwW4MwCe35v0GzyXVkDKBn7wmYf83Qd5MNts5Fmb90NAkkkZOmTPrYk6ibL1LSlXBkYxdK8r7wx3YibgwNwtCng/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1)
+	- 比如，一台 ARM 设备可能有不同类型的显卡、不同大小的内存、甚至不同的电池管理硬件。不同厂商的 ARM 设备，硬件的接口和布局也可能完全不同。所以 ARM 设备没有像 x86 那样的统一标准。
+	- 在这种情况下，如果 Linux 要支持各种不同的 ARM 设备，它就必须要知道每个设备的硬件信息。设备树就是在这个时候派上了用场，它可以告诉操作系统，当前硬件的构成是怎么样的，应该如何访问和管理这些硬件。通过设备树，Linux 可以灵活地适应各种不同的 ARM 硬件，而不需要每次都从头开始写代码去识别硬件。
+- # 例外情况
+	- 当然世界上没有任何的东西是绝对的，随着 ARM 进军服务器和PC领域，现在部分ARM服务器（如微软Surface Pro X）也开始采用UEFI+ACPI的方式用UEFI固件和ACPI表描述硬件。
+	- 但在嵌入式、物联网等领域，设备树因其轻量和灵活性，仍是首选方案。
+	- ![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/CpwW4MwCe35v0GzyXVkDKBn7wmYf83QdUJdcXwVbx03LbUJ0E04q5CC7FGvBapCHD9pnVPA62KJgjftnR0mlNg/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1)
+- # 写在后面
+	- Linux在x86架构上不需要设备树，主要是因为x86架构具有统一的硬件标准和成熟的固件接口（如ACPI），操作系统可以通过这些标准接口自动识别和配置硬件设备。
+	- 而在ARM架构上，由于硬件多样性大、缺乏统一的标准，设备树成为了描述硬件配置、实现设备驱动的必不可少的工具。

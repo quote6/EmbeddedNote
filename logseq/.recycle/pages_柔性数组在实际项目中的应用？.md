@@ -1,0 +1,3 @@
+- > 原文链接：[柔性数组在实际项目中的应用？](https://mp.weixin.qq.com/s?__biz=MzU5MzcyMjI4MA==&mid=2247511639&idx=1&sn=bd999925544d18aa841cc7d4edebece0&chksm=fe0ec090c9794986b37c9382e18c51635f0c3e1dc43884aff66fee3b812e34e686fe00f4bbf6&scene=21#wechat_redirect)
+- 大家好，我是杂烩君。
+- 柔性数组在实际中应用还是挺多的，看过上一篇文章[分享一种灵活性很高的协议格式（附代码例子）](https://mp.weixin.qq.com/s?__biz=MzU5MzcyMjI4MA==&mid=2247511577&idx=1&sn=52e0179773562df3c7712f705fbd2a50&chksm=fe0ec0dec97949c87724437a71e3ebc846dbc338cc6656f41501414e936ab9d6e1f7eb8358d1&token=1969258417&lang=zh_CN&scene=21#wechat_redirect)的小伙伴不知有没有注意到我们有使用了柔性数组：
