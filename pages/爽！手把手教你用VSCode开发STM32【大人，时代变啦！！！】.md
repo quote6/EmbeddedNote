@@ -1,0 +1,2 @@
+- > 原文链接：[爽！手把手教你用VSCode开发STM32【大人，时代变啦！！！】](https://www.bilibili.com/video/BV1QfbpzGENy/?share_source=copy_web&vd_source=fd3aa3239988b4b363737fcb2a86087e)
+-

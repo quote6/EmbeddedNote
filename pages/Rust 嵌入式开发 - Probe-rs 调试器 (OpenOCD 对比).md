@@ -1,0 +1,16 @@
+- > 原文链接：[Rust 嵌入式开发 - Probe-rs 调试器 (OpenOCD 对比)](https://www.bilibili.com/video/BV1UynwzXEKW/?share_source=copy_web&vd_source=fd3aa3239988b4b363737fcb2a86087e)
+- 在嵌入式开发中，常用的调试器有ST-Link、DAP Link、Raspi Debug Probe、WCH Link、GD-Link等。
+- STM32首选的是ST-Link调试器，因为ST-Link是闭源的，所有ARM开源了一个CMSIS-DAP协议(DAP Link)
+- ST Link只支持ARM芯片，但是CMSIS-DAP可以支持ARM芯片也支持RISC-V
+- 使用嵌入式Rust进行开发的时候，主流的调试器都是支持的（包括ESP32系列）
+- 有了调试器之后还需呀有相应的调试软件，常见的调试软件有OpenOCD、BlackMagic、PyOCD和Probe-rs
+- OpenOCD是资历最老的调试软件，但是配置比较麻烦且复杂，虽然在使用IDE的情况，IDE会进行对其编写相关配置，但是也存在在实际使用过程中需要用户根据实际情况自行修改配置文件
+- BlackMagic是针对OpenOCD调试软件编写配置复杂等问题进行改进的软件，不需要配置文件，它可以自动检测芯片型号。
+- OpenOCD和BlackMagic调试软件都用于C/C++的程序调试，PyOCD则是针对Python程序编写的调试软件，它也不需要编写配置文件，可以自动检测芯片型号。
+- OpenOCD、BlackMagic和PyOCD这些调试软件都需要配合GDB软件进行调试。这些调试软件会创建一个服务器然后再由GDB连接这个服务器进行调试。
+- 对于一些操作如打断点、单步执行和上传固件都是在GDB上控制的，OpenOCD、BlackMagic和PyOCD这些调试软件则是负责和调试器（如ST-Link、DAP Link）进行通信。
+- 对于Rust嵌入式开发来说，rust本身自带一个编译器，如果使用OpenOCD、BlackMagic和PyOCD调试软件调试的话就还需要再安装一个GCC的工具链（因为需要使用里面的GDB工具），这样就会显得很麻烦。所以Rust有一个自己的调试软件**Probe-rs**。它可以自动检测芯片型号、上传固件、添加断点调试（相当于将调试软件和GDB工具结合到一起）。
+- 使用RTT协议可以直接使用调试器向电脑的USB口输出信息（也就是不需要额外的串口连接来传输信息）
+- 嵌入式Rust开发也可以使用C/C++那一套的调试工具，使用VSCode的话需要安装**Cortex Debug**插件，然后需要自行编写一个“launch.json”文件，同时还需要有GDB工具。
+- 其实对于**Probe-rs**它并不限制只能调试rust的程序，如果是使用C编写的程序也可以使用**probe-rs**进行调试。
+- [probe-rs官网](https://probe.rs/)

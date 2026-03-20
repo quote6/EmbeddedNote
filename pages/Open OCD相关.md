@@ -1,0 +1,4 @@
+- > 这里放置与**Open OCD**相关的资料
+- [openocd官网](https://openocd.org/)
+- [openocd Github仓库](https://github.com/openocd-org/openocd)
+-
