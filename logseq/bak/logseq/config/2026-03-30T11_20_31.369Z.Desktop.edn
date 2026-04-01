@@ -420,5 +420,5 @@
  ;;      ;use Percent-encoding for other invalid characters
  :file/name-format :triple-lowbar
  :feature/enable-journals? false
- :default-home {:page "待整理"}
+ :default-home {:page "🎈待整理"}
  :publishing/all-pages-public? true}

@@ -1,0 +1,27 @@
+- > 这里整理了有关嵌入式Rust开发可能需要的参考资料
+- [Rust嵌入式教程](https://space.bilibili.com/26705509/lists?sid=1857327&spm_id_from=333.788.0.0)
+	- #Rust #嵌入式
+	- 添加日期： [[Mar 31st, 2026]]
+	- 相关说明：可以跟着教程了解嵌入式Rust开发的相关知识，但是上手环境可能并不合适，因为视频较早的缘故，当时视频里演示的模板现在已不可使用，但是官方新提供的工程模板细节又太多，自己研究比较费力。可以学习下面的视频链接，那个链接的建立工程下载教程比较好。
+	- 重要程度：🌟
+	- 备注：
+	-
+- [Rust 嵌入式开发](https://space.bilibili.com/3546974181656685/lists/6363020?type=season)
+	- #Rust #嵌入式
+	- 添加日期： [[Mar 31st, 2026]]
+	- 相关说明： 这个教程是手把手从零搭建一个嵌入式Rust项目，比较适合入门上手。
+	- 重要程度：🌟
+	- 备注：
+-
+- [Rust 嵌入式系统](https://space.bilibili.com/3546974181656685/lists/6453786?type=season)
+	- #Rust #嵌入式
+	- 添加日期： [[Mar 31st, 2026]]
+	- 相关说明： 介绍了嵌入式Rust的相关架构，讲解得比较简单，适合快速入门了解。
+	- 重要程度：🌟
+	- 备注：
+	-
+-
+- 这里再粘贴几个会用到的链接，在创建嵌入式Rus工程时可能会使用到。
+- [stm32f4xx-hal（crate）](https://crates.io/crates/stm32f4xx-hal)
+- [app-template](https://github.com/knurling-rs/app-template)
+- [stm32f4xx-hal（github仓库）](https://github.com/stm32-rs/stm32f4xx-hal/tree/master)

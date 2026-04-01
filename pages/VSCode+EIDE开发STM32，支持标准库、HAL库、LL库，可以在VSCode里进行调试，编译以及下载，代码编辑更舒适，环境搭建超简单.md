@@ -1,0 +1,3 @@
+- > 原文链接：[VSCode+EIDE开发STM32，支持标准库、HAL库、LL库，可以在VSCode里进行调试，编译以及下载，代码编辑更舒适，环境搭建超简单。](https://www.bilibili.com/video/BV1nr4y1R7Jb/?share_source=copy_web&vd_source=fd3aa3239988b4b363737fcb2a86087e)
+- 作者编写的相应文档 [[EIDE+VSCode+STM32CubeMX+Keil5（可选）开发STM32]]
+-
